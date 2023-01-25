@@ -10,8 +10,13 @@ export default function App() {
 
   console.log({ data });
 
-  // Write code here.
-  //
+  useEffect(() => {
+    if(dataType.length > 1) {
+      fetch(`https://swapi.dev/api/${dataType}`)
+      .then(res=>res.json())
+      .then(data => setData(data))
+    } else {console.log("No datatype selected")}
+  }, [dataType])
 
   return (
     <div>
